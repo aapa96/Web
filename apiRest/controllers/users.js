@@ -1,7 +1,7 @@
 'use strict'
 var bcrypt = require('bcrypt-nodejs');
 var User = require('../models/users');
-
+var jwt = require('../services/jwt');
 function pruebas(req,res){
 	res.status(200).send({
 		message:"Controlador de usuario listo"
@@ -18,13 +18,13 @@ function saveUser(req,res){
 	user.email = params.email;
 	user.birthday = 'null';
 	user.phone = params.phone;
-	user.role = 'ROLE_USER';
+	user.role = 'ROLE_ADMIN';
 
  	if(params.password){
 		//encriptar contrase;a
 		bcrypt.hash(params.password,null,null,function(err,hash){
 			user.password = hash;
-			if (user.name != null && user.surname != user.email != null && user.phone != null) {
+			if (user.name != null && user.surname != null && user.email != null && user.phone != null) {
 				// Guardar Usuario
 				user.save((err,userStored)=>{
 					if (err) {
@@ -32,10 +32,10 @@ function saveUser(req,res){
 						res.status(500).send({message:"Error al guardar usuario"});
 					} else {
 						// statement
-						if (condition) {
-							// statement
+						if (!userStored) {
+							res.status(404).send({message:"No se ha registrado el usuario"});
 						} else {
-							// statement
+							res.status(200).send({user: userStored});
 						}
 					}
 				});
@@ -48,9 +48,50 @@ function saveUser(req,res){
 	}
 }
 
+
+function loginUser(req,res){
+	var params = req.body;
+	var email = params.email;
+	var password = params.password;
+
+	User.findOne({email:email.toLowerCase()},(err,user) =>{
+		if (err) {
+			// statement
+			res.status(500).send({message:"Error en la peticion"});
+		} else {
+			// statement
+			if (!user) {
+				// statement
+				res.status(404).send({message:"El usuario no existe"});
+			} else {
+				// Comprobar contrasea
+				bcrypt.compare(password,user.password,function(err,check){
+					if(check){
+						//devolve datos de usuario logueado
+						if(params.gethash){
+							//devolver token con datos de usuario gracias a jwt
+							res.status(200).send({
+								token:jwt.createToken(user)
+							});
+						}else{
+							res.status(200).send({user});
+						}
+					}else{
+						res.status(404).send({message:"Usuario no ha podido loguearse"});
+					}
+				});
+			}
+		}
+	});
+}
+
+
+
+
 module.exports = {
 
 	pruebas,
-	saveUser
+	saveUser,
+	loginUser
 
 };
