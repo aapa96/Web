@@ -9,7 +9,7 @@ var api = express.Router();
 
 api.get('/ControladorU',md_auth.ensureAuth,UserController.pruebas);
 api.post('/register',UserController.saveUser);
-api.post('/loginUser',UserController.loginUser);
-api.put('/updateUser/:id',md_auth.ensureAuth,UserController.updateUser);
+api.post('/login',UserController.loginUser);
+api.put('/update/:id',md_auth.ensureAuth,UserController.updateUser);
 
 module.exports=api;
