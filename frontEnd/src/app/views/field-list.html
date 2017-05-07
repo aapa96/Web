@@ -24,7 +24,7 @@
 <ul class="field-list" *ngIf="identity">
 		<li *ngFor="let field of fields" class="col-lg-3 field-item">
 		<div class="field-image">
-			<img src="{{ url +'/get-image-Field/'+field.image }}">
+			<a [routerLink]="['/field',field._id]"><img src="{{ url +'/get-image-Field/'+field.image }}"></a>
 		</div>
 			<div class="field-name">
 				<a [routerLink]="['/field',field._id]">
