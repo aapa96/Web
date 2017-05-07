@@ -8,9 +8,9 @@
 	<nav id="navigation">
 		
 
-		<a [routerLink]="['/']" >
+		<a [routerLink]="['/fields',1]" [routerLinkActive]="['actived']">
 			<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-			Home
+			Complejos
 		</a>
 
 		<a [routerLink]="['/']" >
@@ -36,7 +36,7 @@
 			{{identity.name}}
 		</span>
 		
-		<a [routerLink]="['/mis-datos']" >
+		<a [routerLink]="['/mis-datos']" [routerLinkActive]="['actived']" >
 			<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 			Mis datos
 		</a>
@@ -48,7 +48,7 @@
 	
 </div>	
 
-<div *ngIf="identity" class="'navigation col-lg-11">
+<div [class.hidden]="!identity" class="'navigation col-lg-11">
 	<router-outlet></router-outlet>
 </div>	
 

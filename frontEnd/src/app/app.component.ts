@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {User} from '../Models/users';
 import {UserService} from '../services/users.service';
-
+import {Router, ActivatedRoute,Params } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +19,8 @@ export class AppComponent {
 	public errorMessage;
 	public alertRegister;
 	constructor(
+		private _route:ActivatedRoute,
+		private _router:Router,
 		private _userService:UserService
 		){
 		this.user = new User ('','','','','','','','ROLE_USER');
@@ -95,6 +97,7 @@ export class AppComponent {
 		localStorage.clear();
 		this.identity = null;
 		this.token = null;
+		this._router.navigate(['/']);
 	}
 
 	onSubmitRegister(){

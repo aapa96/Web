@@ -7,8 +7,7 @@ var app = express();
 
 //rutas
 var users_routes = require('./routes/users');
-
-
+var field_routes = require('./routes/canchas');
 
 
 app.use(bodyParser.urlencoded({extended:false}));
@@ -28,7 +27,7 @@ app.use((req,res,next)=>{
 //rutas base
  
 app.use('/api',users_routes);
-
+app.use('/api',field_routes);
  
 
 

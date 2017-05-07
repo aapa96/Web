@@ -20,7 +20,6 @@ exports.ensureAuth = function(req,res,next){
 		} 
 	} catch(ex) {
 		// statements
-		console.log(ex);
 		return res.status(403).send({message:"Token no valido"});
 	}
 	req.user = payload;

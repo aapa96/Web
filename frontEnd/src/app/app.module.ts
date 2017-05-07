@@ -5,14 +5,20 @@ import { HttpModule } from '@angular/http';
 import {routing,appRoutingProviders} from './app.routing';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home.component';
 import { UserEditComponent } from './components/user-edit.components';
+import { FieldListComponent } from './components/field-list.component';
+import { FieldAddComponent } from './components/field-add.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserEditComponent
+    HomeComponent,
+    UserEditComponent,
+    FieldListComponent,
+    FieldAddComponent
   ],
   imports: [
     BrowserModule,

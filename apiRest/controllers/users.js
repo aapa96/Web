@@ -18,7 +18,7 @@ function saveUser(req,res){
 	user.email = params.email;
 	user.birthday = 'null';
 	user.phone = params.phone;
-	user.role = 'ROLE_ADMIN';
+	user.role = 'ROLE_USER';
 
  	if(params.password){
 		//encriptar contrase;a
@@ -72,6 +72,7 @@ function loginUser(req,res){
 							//devolver token con datos de usuario gracias a jwt
 							res.status(200).send({
 								token:jwt.createToken(user)
+								
 							});
 						}else{
 							res.status(200).send({user});

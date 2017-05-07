@@ -1,0 +1,7 @@
+<div class="head-page" *ngIf="identity">
+	<h1>
+		{{titulo}}
+	</h1>
+	<a [routerLink]="['/createField']"  *ngIf="identity && identity.role =='ROLE_ADMIN'"  class="btn btn-default">Agregar Complejo</a>
+</div>
+
