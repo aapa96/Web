@@ -48,7 +48,7 @@ export class FieldAddComponent implements OnInit{
 				}else{
 					this.alertMessage="Se creo correctamente";
 					this.field = response.field;
-					//this._router.navigate(['/edit-field'],response.field._id);
+					this._router.navigate(['/edit-field',response.field._id]);
 				}
 			},
 			error => {
@@ -60,9 +60,6 @@ export class FieldAddComponent implements OnInit{
 					console.log(error);
 				}
 			}
-
-
-
 		);
 	}
 }

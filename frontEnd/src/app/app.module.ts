@@ -7,8 +7,11 @@ import {routing,appRoutingProviders} from './app.routing';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home.component';
 import { UserEditComponent } from './components/user-edit.components';
+
 import { FieldListComponent } from './components/field-list.component';
 import { FieldAddComponent } from './components/field-add.component';
+import { FieldEditComponent } from './components/field-edit.component';
+import { FieldDetailComponent } from './components/field-detail.component';
 
 
 
@@ -17,8 +20,11 @@ import { FieldAddComponent } from './components/field-add.component';
     AppComponent,
     HomeComponent,
     UserEditComponent,
+
     FieldListComponent,
-    FieldAddComponent
+    FieldAddComponent,
+    FieldEditComponent,
+    FieldDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +32,7 @@ import { FieldAddComponent } from './components/field-add.component';
     HttpModule,
     routing
   ],
+  
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })

@@ -11,14 +11,21 @@ import { HomeComponent } from './components/home.component';
 
 import { FieldListComponent } from './components/field-list.component';
 import { FieldAddComponent } from './components/field-add.component';
+import { FieldEditComponent } from './components/field-edit.component';
+import { FieldDetailComponent } from './components/field-detail.component';
+
 
 
 const appRoutes: Routes = [
 	{path:'', component:HomeComponent},
 	{path:'fields/:page', component:FieldListComponent},
 	{path:'createField', component:FieldAddComponent},
+
+	{path:'edit-field/:id', component:FieldEditComponent},
+	{path:'field/:id', component:FieldDetailComponent},
+
 	{path:'mis-datos',component:UserEditComponent},
-	{path:'**',component:FieldListComponent}
+	{path:'**',component:HomeComponent}
 
 ];
 

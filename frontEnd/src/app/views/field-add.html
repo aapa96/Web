@@ -1,4 +1,4 @@
-<div class="col-lg-6">
+<div class="col-lg-6" *ngIf="identity && identity.role == 'ROLE_ADMIN'">
 	<h1>{{titulo}}</h1>
 
 	<div *ngIf="alertMessage">
@@ -31,9 +31,31 @@
 				<span *ngIf="!email.valid && email.touched">El email es obligatorio</span>
 
 			</p>
-			
+
+		<!-- ///////////////////////////////////////////////// -->	
+			<div *ngIf="is_edit">
+				<div class="field_image_for_edit" *ngIf="field.image && field.image != 'null'">
+					<img src="{{url +'get-image-field/' + field.image}}" />
+				</div>
+				<label>Sube la imagen de la cancha</label>
+				<input type="file" placeholder="Subir imagen" (change)="fileChangeEvent($event)" >
+			</div>
+		
+		
+		<!-- ///////////////////////////////////////////////// -->	
+
 			<input type="submit" class="btn btn-success"  name="" value="{{titulo}}" [disabled]="!formField.form.valid" >
 		</form>
 	</div>
 
 </div>
+
+
+
+<div class="col-lg-6" *ngIf="!identity || identity.role != 'ROLE_ADMIN'">
+	<h1>Error</h1>
+	<p>No tienes acceso a esta parte de la aplicacion.</p>
+</div>
+
+
+

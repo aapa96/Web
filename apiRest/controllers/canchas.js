@@ -33,7 +33,7 @@ function getFields(req,res){
 		var page = 1;
 	}
 	
-	var itemsPerPage = 3;
+	var itemsPerPage = 4;
 	Field.find().sort('name').paginate(page, itemsPerPage, function(err,fields,total){
 
 		if(err){
@@ -152,6 +152,7 @@ function getImageFile(req, res){
 		}
 	});
 }
+
 module.exports  = {
 	getField,
 	pruebas,

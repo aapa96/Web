@@ -1,0 +1,25 @@
+<div class="field-box" *ngIf="field">
+	
+
+	<div class="field-head-card">
+		
+		<div class="image">
+			<img src="{{ url +'/get-image-Field/'+field.image }}" *ngIf="field.image && field.image != 'null'">
+		</div>
+
+		<div class="data">
+			<h1>{{field.name}}</h1>
+			<p class="description">
+				{{field.description}}
+			</p>
+		</div>
+
+		
+
+	</div>	
+
+
+
+
+
+</div>
