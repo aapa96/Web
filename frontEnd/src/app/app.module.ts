@@ -13,6 +13,12 @@ import { FieldAddComponent } from './components/field-add.component';
 import { FieldEditComponent } from './components/field-edit.component';
 import { FieldDetailComponent } from './components/field-detail.component';
 
+import { NoticiaListComponent } from './components/noticia-list.component';
+import { NoticiaAddComponent } from './components/noticia-add.component';
+import { NoticiadEditComponent } from './components/noticia-edit.component';
+import { NoticiaDetailComponent } from './components/noticia-detail.component';
+
+ 
 
 
 @NgModule({
@@ -24,7 +30,13 @@ import { FieldDetailComponent } from './components/field-detail.component';
     FieldListComponent,
     FieldAddComponent,
     FieldEditComponent,
-    FieldDetailComponent
+    FieldDetailComponent,
+
+    NoticiaListComponent,
+    NoticiaAddComponent,
+    NoticiadEditComponent,
+    NoticiaDetailComponent
+ 
   ],
   imports: [
     BrowserModule,

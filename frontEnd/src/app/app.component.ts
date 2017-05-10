@@ -11,13 +11,17 @@ import {Router, ActivatedRoute,Params } from '@angular/router';
   //styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public title = 'Soccer Field!';
+  public title = 'Super Kampeones!';
 	public user: User;
 	public user_register: User;
 	public identity;
 	public token; 
 	public errorMessage;
 	public alertRegister;
+	public inscribe;
+	public registre;
+
+
 	constructor(
 		private _route:ActivatedRoute,
 		private _router:Router,
@@ -25,11 +29,23 @@ export class AppComponent {
 		){
 		this.user = new User ('','','','','','','','ROLE_USER');
 		this.user_register = new User ('','','','','','','','ROLE_USER');
+		this.inscribe = false;
+		this.registre = false;
 	}
 
 	ngOnInit(){
 		this.identity = this._userService.getIdentity();
 		this.token = this._userService.getToken();
+	}
+
+	onInscribe(){
+		this.inscribe = true;
+		this.registre = false;
+	}
+
+	onRegister(){
+		this.inscribe = false;
+		this.registre = true;
 	}
 
 	public onSubmit(){	
@@ -130,4 +146,7 @@ export class AppComponent {
 
 		);
 	}
+
+
+
 }

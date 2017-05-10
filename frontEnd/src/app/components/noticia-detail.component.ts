@@ -2,20 +2,20 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute,Params } from '@angular/router';
 import {GLOBAL} from '../../services/global';
 import {UserService} from '../../services/users.service';
-import {FieldService} from '../../services/field.service';
+import {NoticiaService} from '../../services/noticia.service';
 
-import {Field} from '../../Models/fields';
+import {Noticia} from '../../Models/noticias';
 
 @Component({
-	selector: 'field-detail',
-	templateUrl: '../views/field-detail.html',
-	providers:[UserService,FieldService]
+	selector: 'noticia-detail',
+	templateUrl: '../views/noticia-detail.html',
+	providers:[UserService,NoticiaService]
 })
 
 
-export class FieldDetailComponent implements OnInit{
+export class NoticiaDetailComponent implements OnInit{
 
-	public field: Field;
+	public noticia: Noticia;
 	public identity;
 	public token;
 	public url:string;
@@ -23,9 +23,9 @@ export class FieldDetailComponent implements OnInit{
 	
 	constructor(
 		private _route:ActivatedRoute,
-		private _router:Router,
+		private _router:Router,,
 		private _userService:UserService,
-		private _fieldService:FieldService
+		private _noticiaService:NoticiaService
 	
 	){
 
@@ -38,19 +38,19 @@ export class FieldDetailComponent implements OnInit{
 	ngOnInit(){
 		console.log('Editar canchas funcionando');
 		//llamar al metodo del api para sacar una cancha en base al id
-		this.getField();
+		this.getNoticia	();
 	}
 
-	getField(){
+	getNoticia(){
 		this._route.params.forEach((params: Params) =>{
 			let id = params['id'];
-			this._fieldService.getField(this.token,id).subscribe(
+			this._noticiaService.getNoticia(this.token,id).subscribe(
 				response =>{
 
-					if(!response.field){
+					if(!response.noticia){
 						this._router.navigate(['/']);
 					}else{
-						this.field = response.field;
+						this.noticia = response.noticia;
 					}
 				},
 				error => {

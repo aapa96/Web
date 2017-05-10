@@ -3,8 +3,8 @@
 		{{titulo}}
 	</h1>
 	<a [routerLink]="['/createField']"  *ngIf="identity && identity.role =='ROLE_ADMIN'"  class="btn btn-default">Agregar Complejo</a>
-
-
+	
+	
 
 	<ul class="pagination pull-right">
 		<li>
@@ -18,6 +18,21 @@
 	</ul>
 
 </div>
+<br>
+
+<!-- <div class="col-lg-7">
+	<select name="Distritos" class="form-control" >
+		<option value="Mariano Melgar">Mariano Melgar</option>
+		<option value="Cercado">Cercado</option>
+		<option value="Jacobo Hunter">Jacobo Hunter</option>
+		<option value="Jose Luis Bustamante y Rivero">Jose Luis Bustamante y Rivero</option>
+		<option value="Miraflores">Miraflores</option>
+	</select>	
+</div>
+
+<div class="col-lg-1 btn btn-primary">
+	<a [routerLink]="['/']" style="color: white; text-decoration: none;" > Buscar </a>
+</div> -->
 
 <div class="clearfix"></div>
 

@@ -1,0 +1,12 @@
+<div *ngIf="noticia" class="noticia-box">
+	<h1>{{noticia.name}}</h1>
+	<p>
+		{{noticia.subtitle}}
+	</p>
+	<p>
+		{{noticia.description}}
+	</p>
+	<p>
+		<img src="{{url +'get-image-Noticia/' + noticia.image}}" />
+	</p>
+</div>

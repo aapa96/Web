@@ -2,53 +2,59 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute,Params } from '@angular/router';
 import {GLOBAL} from '../../services/global';
 import {UserService} from '../../services/users.service';
-import {FieldService} from '../../services/field.service';
+import {NoticiaService} from '../../services/noticia.service';
 
-import {Field} from '../../Models/fields';
+import {Noticia} from '../../Models/noticias';
+//import {FieldService} from '../../services/noticia.service';
+
+
 
 @Component({
-	selector: 'field-add',
-	templateUrl: '../views/field-add.html',
-	providers:[UserService,FieldService]
+	selector: 'noticia-add',
+	templateUrl: '../views/noticia-add.html',
+	providers:[UserService,NoticiaService]
 })
 
 
-export class FieldAddComponent implements OnInit{
+export class NoticiaAddComponent implements OnInit{
 	public titulo: string;
-	public field: Field;
+	public noticia: Noticia;
 	public identity;
 	public token;
 	public url:string;
 	public alertMessage;
+
 	constructor(
 		private _route:ActivatedRoute,
 		private _router:Router,
 		private _userService:UserService,
-		private _fieldService:FieldService
+		private _noticiaService:NoticiaService
 	){
-		this.titulo = 'Crear nuevo complejo';
+		this.titulo = 'Crear Noticias';
 		this.identity = this._userService.getIdentity();
 		this.token = this._userService.getToken();
 		this.url = GLOBAL.url;	
-		this.field = new Field('','','','','');
+		this.noticia = new Noticia('','','','');
+		
+
 	}
 
 	ngOnInit(){
-		console.log('Agregar canchas funcionando');
+		console.log('Creado de noticias funcionando');
+
 		//lista de canchas
 	}
-
 	onSubmit(){
-		console.log(this.field);
-		this._fieldService.addField(this.token,this.field).subscribe(
+		console.log(this.noticia);
+		this._noticiaService.addNoticia(this.token,this.noticia).subscribe(
 			response =>{
 				
-				if(!response.field){
+				if(!response.noticia){
 					this.alertMessage="error en el servidor";
 				}else{
 					this.alertMessage="Se creo correctamente";
-					this.field = response.field;
-					this._router.navigate(['/edit-field',response.field._id]);
+					this.noticia = response.noticia;
+					this._router.navigate(['/edit-noticia',response.noticia._id]);
 				}
 			},
 			error => {
@@ -60,6 +66,10 @@ export class FieldAddComponent implements OnInit{
 					console.log(error);
 				}
 			}
+
+
 		);
 	}
+
+
 }

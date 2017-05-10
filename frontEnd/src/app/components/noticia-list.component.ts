@@ -2,21 +2,21 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute,Params } from '@angular/router';
 import {GLOBAL} from '../../services/global';
 import {UserService} from '../../services/users.service';
-import {Field} from '../../Models/fields';
-import {FieldService} from '../../services/field.service';
+import {Noticia} from '../../Models/noticias';
+import {NoticiaService} from '../../services/noticia.service';
 
 
 
 @Component({
-	selector: 'field-list',
-	templateUrl: '../views/field-list.html',
-	providers:[UserService,FieldService]
+	selector: 'noticia-list',
+	templateUrl: '../views/noticia-list.html',
+	providers:[UserService,NoticiaService]
 })
 
 
-export class FieldListComponent implements OnInit{
+export class NoticiaListComponent implements OnInit{
 	public titulo: string;
-	public fields: Field[];
+	public noticias: Noticia[];
 	public identity;
 	public token;
 	public url:string;
@@ -27,9 +27,9 @@ export class FieldListComponent implements OnInit{
 		private _route:ActivatedRoute,
 		private _router:Router,
 		private _userService:UserService,
-		private _fieldService:FieldService
+		private _noticiaService:NoticiaService
 	){
-		this.titulo = 'Complejos';
+		this.titulo = 'Noticias';
 		this.identity = this._userService.getIdentity();
 		this.token = this._userService.getToken();
 		this.url = GLOBAL.url;	
@@ -39,12 +39,12 @@ export class FieldListComponent implements OnInit{
 	}
 
 	ngOnInit(){
-		console.log('Lista de canchas funcionando');
+		console.log('Lista de noticias funcionando');
 		//lista de canchas
-		this.getFields();
+		this.getNoticias();
 	}
 
-	getFields(){
+	getNoticias(){
 		this._route.params.forEach((params:Params) =>{
 			let page = +params['page'];
 			if(!page){
@@ -58,13 +58,13 @@ export class FieldListComponent implements OnInit{
 			}
 
 
-			this._fieldService.getFields(this.token,page).subscribe(
+			this._noticiaService.getNoticias(this.token,page).subscribe(
 					response =>{
 
-						if(!response.fields){
+						if(!response.noticias){
 							this._router.navigate(['/']);
 						}else{
-							this.fields = response.fields;
+							this.noticias = response.noticias;
 						}
 					},
 					error => {

@@ -5,7 +5,8 @@ var FieldSchema = Schema({
 	name: String,
 	description: String,
 	email: String,
-	image:String
+	image:String,
+	distrit: String
 })
 
 

@@ -41,6 +41,9 @@ html,body{
 	display: block;
 	width: 100%;
 }
+
+
+
 #user_logged .glyphicon-log-out{
 	font-size: 22px;
 }
@@ -58,10 +61,24 @@ html,body{
 	cursor:pointer;
 }
 
+.boton1,.boton2{
+	margin-top: 44px;
+}
+.boton1{
+	
+	left: 220px;
+
+}
+
+ 
+
 .field_image_for_edit img{
 	width: 150px;
 }
 
+.noticia_image_for_edit img{
+	width: 300px;
+}
 
 .field-list{
 	margin:0px;
@@ -95,7 +112,7 @@ html,body{
 
 
 .field-item .field-image img{
-	height:  100%;	
+	width:100%;	
 }
 
 .field-item .field-name{
@@ -107,3 +124,49 @@ html,body{
 .field-item .field-name a{
 	color: white;
 }
+
+
+.noticia-list{
+	margin:0px;
+	padding: 0px;
+	margin-top: 50px;
+	list-style: none;
+
+
+}
+
+/
+.noticia-item{
+	width: 23%;
+	margin: 0px;
+	padding: 0px;
+	height: 317px;
+	border: 1px solid #444;
+	margin-left: 20px;
+	margin-top: 20px;
+
+}
+
+.noticia-item .noticia-image{
+	width: 100%;
+	height: 300px;
+	overflow: hidden;
+	background: black;
+
+	
+}
+
+/*
+.noticia-item .noticia-image img{
+	width:100%;	
+}
+
+.noticia-item .noticia-name{
+	color: white;
+	padding: 10px;
+	background: #222326;
+
+}
+.noticia-item .noticia-name a{
+	color: white;
+}  */

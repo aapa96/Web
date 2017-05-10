@@ -1,0 +1,37 @@
+<div class="head=page" *ngIf="identity">
+	<h1>{{titulo}}</h1>
+	<a [routerLink]="['/crear-noticias']"  *ngIf="identity && identity.role =='ROLE_ADMIN'"  class="btn btn-default">Agregar Noticia	</a>
+	<ul class="pagination pull-right">
+		<li>
+		<a [routerLink]="['/noticias',prevpage]">&laquo;</a>
+		</li>
+
+		<li>
+		<a [routerLink]="['/noticias',nextpage]">&raquo;</a>
+		</li>
+
+	</ul>
+</div>
+
+
+<br>
+<div class="clearfix"></div>
+
+<ul class="noticia-list" *ngIf="identity" >
+	<li *ngFor="let noticia of noticias" class="col-lg-3 noticia-item">
+
+		<div class="noticia-image">
+			<img src="{{url +'get-image-Noticia/' + noticia.image}}" />
+		</div>
+
+		<div class="noticia-name" >
+			<a [routerLink]="['/noticia',noticia._id]">
+				{{noticia.name}}
+			</a>
+			<div class="buttons" *ngIf="identity.role == 'ROLE_ADMIN'">
+				<a [routerLink]="['/edit-noticia',noticia._id]" class="btn btn-sm btn-warning" > Editar</a>
+				<a href="#" class="btn btn-sm btn-danger" > Borrar</a>
+			</div>
+		</div>
+	</li>
+</ul>

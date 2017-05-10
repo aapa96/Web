@@ -9,7 +9,7 @@ var md_upload = multipart({uploadDir:'./upload/fields'});
 
 api.get('/field/:id',md_auth.ensureAuth,FieldController.getField);
 api.get('/fields/:page?',md_auth.ensureAuth,FieldController.getFields);
-
+api.get('/fields/:distrit',md_auth.ensureAuth,FieldController.getFieldsDistrit);
 
 api.post('/save',md_auth.ensureAuth,FieldController.saveField);
 

@@ -3,80 +3,68 @@ import {Http,Response,Headers,RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import {GLOBAL} from './global';
-import {Field} from '../Models/fields';
-
-
+import {Noticia} from '../Models/noticias';
 
 
 @Injectable()
-export class FieldService{
+export class NoticiaService{
 	public url: string;
 	
 	constructor(private _http:Http){
 		this.url = GLOBAL.url;
 	}
 
-	getFields(token,page){
+	addNoticia(token,noticia:Noticia){
+		let params = JSON.stringify(noticia);
+		let headers = new Headers({
+			'Content-Type':'application/json',
+			'Authorization':token
+		})
+
+		return this._http.post(this.url+'saveNoticia',params,{headers:headers})
+						.map(res => res.json());
+	}
+
+
+	getNoticias(token,page){
 		let headers = new Headers({
 			'Content-Type':'application/json',
 			'Authorization':token
 		});
 
 		let options = new RequestOptions({headers:headers});
-		return this._http.get(this.url+'fields/'+page,options).map(res => res.json());
+		return this._http.get(this.url+'getNoticias/'+page,options).map(res => res.json());
 	}
 
-	getField(token,id: string){
+	getNoticia(token,id: string){
 
 		let headers = new Headers({
 			'Content-Type':'application/json',
 			'Authorization':token
 		});
 		let options = new RequestOptions({headers:headers});
-		return this._http.get(this.url+'field/'+id,options).map(res=> res.json());
+		return this._http.get(this.url+'getNoticia/'+id,options).map(res=> res.json());
 	}
 
-	getFieldsforDistrit(token,distrit: string){
 
+	editNoticia(token,id:string,noticia:Noticia){
+		let params = JSON.stringify(noticia);
 		let headers = new Headers({
 			'Content-Type':'application/json',
 			'Authorization':token
 		});
-		let options = new RequestOptions({headers:headers});
-		return this._http.get(this.url+'field/'+distrit,options).map(res=> res.json());
-	}
 
-	
-
-
-	addField(token,field:Field){
-		let params = JSON.stringify(field);
-		let headers = new Headers({
-			'Content-Type':'application/json',
-			'Authorization':token
-		});
-		return this._http.post(this.url+'save',params,{headers: headers})
+		return this._http.put(this.url+'updateNoticia/'+id,params,{headers: headers})
 		.map(res=> res.json());
 	}
 
-	editField(token,id:string,field:Field){
-		let params = JSON.stringify(field);
-		let headers = new Headers({
-			'Content-Type':'application/json',
-			'Authorization':token
-		});
-
-		return this._http.put(this.url+'updateField/'+id,params,{headers: headers})
-		.map(res=> res.json());
-	}
-
-	deleteField(token,id: string){
+	deleteNoticia(token,id: string){
 		let headers = new Headers({
 			'Content-Type':'application/json',
 			'Authorization':token
 		});
 		let options = new RequestOptions({headers:headers});
-		return this._http.delete(this.url+'removeField/'+id,options).map(res=> res.json());
+		return this._http.delete(this.url+'deleteNoticia/'+id,options).map(res=> res.json());
 	}
 
 }	

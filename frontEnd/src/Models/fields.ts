@@ -3,7 +3,8 @@ export class Field{
 		public name: string,
 		public description: string,
 		public email: string,
-		public image: string
+		public image: string,
+		public distrit: string
 
 	){}
 }

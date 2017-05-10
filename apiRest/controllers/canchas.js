@@ -1,3 +1,4 @@
+
 'use strict'
 var path = require('path');
 var fs = require('fs');
@@ -33,7 +34,7 @@ function getFields(req,res){
 		var page = 1;
 	}
 	
-	var itemsPerPage = 4;
+	var itemsPerPage =8;
 	Field.find().sort('name').paginate(page, itemsPerPage, function(err,fields,total){
 
 		if(err){
@@ -54,6 +55,33 @@ function getFields(req,res){
 }
 
 
+function getFieldsDistrit(req,res){
+	if(req.params.page){
+		var page = req.params.page;
+	}else{
+		var page = 1;
+	}
+	
+	var itemsPerPage = 4;
+	Field.find().sort('distrit').paginate(page, itemsPerPage, function(err,fields,total){
+
+		if(err){
+			res.status(500).send({message:'Error en la peticion'});
+		}else{
+			if(!fields){
+				res.status(404).send({message:'No hay establecimientos'});
+			}else{
+				return res.status(200).send({
+					pages: total,
+					fields: fields
+				});
+			}
+		}
+
+	});
+
+}
+
 
 function saveField(req,res){
 	var field = new Field();
@@ -62,6 +90,7 @@ function saveField(req,res){
 	field.description = params.description;
 	field.email = params.email;
 	field.image ='null';
+	field.distrit=params.distrit;
 	field.save((err,fiedlStored) =>{
 		
 		if(err){
@@ -161,5 +190,6 @@ module.exports  = {
 	updateField,
 	deleteField,
 	uploadImage,
-	getImageFile
+	getImageFile,
+	getFieldsDistrit
 };

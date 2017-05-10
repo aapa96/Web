@@ -2,57 +2,57 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute,Params } from '@angular/router';
 import {GLOBAL} from '../../services/global';
 import {UserService} from '../../services/users.service';
-import {FieldService} from '../../services/field.service';
+import {NoticiaService} from '../../services/noticia.service';
 import {UploadService} from '../../services/upload.service';
-
-import {Field} from '../../Models/fields';
+ 
+import {Noticia} from '../../Models/noticias';
 
 @Component({
-	selector: 'field-edit',
-	templateUrl: '../views/field-add.html',
-	providers:[UserService,FieldService,UploadService]
+	selector: 'noticia-edit',
+	templateUrl: '../views/noticia-add.html',
+	providers:[UserService,NoticiaService,UploadService]
 })
 
 
-export class FieldEditComponent implements OnInit{
+export class NoticiadEditComponent implements OnInit{
 	public titulo: string;
-	public field: Field;
+	public noticia: Noticia;
 	public identity;
 	public token;
 	public url:string;
 	public alertMessage;
 	public is_edit;
+
 	constructor(
 		private _route:ActivatedRoute,
 		private _router:Router,
 		private _userService:UserService,
-		private _fieldService:FieldService,
+		private _noticiaService:NoticiaService,
 		private _uploadService:UploadService
 	){
-		this.titulo = 'Editar complejo';
+		this.titulo = 'Editar Noticia';
 		this.identity = this._userService.getIdentity();
 		this.token = this._userService.getToken();
 		this.url = GLOBAL.url;	
-		this.field = new Field('','','','','');
+		this.noticia = new Noticia('','','','');
 		this.is_edit = true;
 	}
 
 	ngOnInit(){
 		console.log('Editar canchas funcionando');
 		//llamar al metodo del api para sacar una cancha en base al id
-		this.getField();
+		this.getNoticia();
 	}
 
-	getField(){
+	getNoticia(){
 		this._route.params.forEach((params: Params) =>{
 			let id = params['id'];
-			this._fieldService.getField(this.token,id).subscribe(
+			this._noticiaService.getNoticia(this.token,id).subscribe(
 				response =>{
-
-					if(!response.field){
+					if(!response.noticia){
 						this._router.navigate(['/']);
 					}else{
-						this.field = response.field;
+						this.noticia = response.noticia;
 					}
 				},
 				error => {
@@ -69,23 +69,21 @@ export class FieldEditComponent implements OnInit{
 	}
 
 	onSubmit(){
-		console.log(this.field);
+		console.log(this.noticia);
 		this._route.params.forEach((params: Params) =>{
 			let id = params['id'];
 
-			this._fieldService.editField(this.token,id,this.field).subscribe(
+			this._noticiaService.editNoticia(this.token,id,this.noticia).subscribe(
 				response =>{
 					
-					if(!response.field){
+					if(!response.noticia){
 						this.alertMessage="error en el servidor";
 					}else{
-						this.alertMessage="Se actualizo correctamente correctamente";
-						//subir la imagen de la cancha
-						this._uploadService.makeFileRequest(this.url+'uploadimageField/'+id,[], this.filesToUpload,this.token,'image').then(
-
+						this.alertMessage="Se actualizo correctamente";
+						this._uploadService.makeFileRequest(this.url+'uploadimageNoticia/'+id,[], this.filesToUpload,this.token,'image').then(
 							(result) => {
 						
-									this._router.navigate(['/fields',1]);
+								this._router.navigate(['/noticias',1]);
 								
 								
 							},
@@ -93,8 +91,8 @@ export class FieldEditComponent implements OnInit{
 								console.log(error);
 							}
 						);
-						//this.field = response.field;
-						//this._router.navigate(['/edit-field'],response.field._id);
+
+					 
 					}
 				},
 				error => {
@@ -110,12 +108,11 @@ export class FieldEditComponent implements OnInit{
 		});
 	}
 
-
+	
 	public filesToUpload: Array<File>;
 
 	fileChangeEvent(fileInput: any){
 		this.filesToUpload = <Array<File>>fileInput.target.files;
 	}
-
 
 }

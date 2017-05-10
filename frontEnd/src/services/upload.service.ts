@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {GLOBAL} from './global';
 import {Field} from '../Models/fields';
 
+import {Noticia} from '../Models/noticias';
 
 
 

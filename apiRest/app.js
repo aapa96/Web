@@ -8,6 +8,8 @@ var app = express();
 //rutas
 var users_routes = require('./routes/users');
 var field_routes = require('./routes/canchas');
+var noticia_routes = require('./routes/noticias');
+
 
 
 app.use(bodyParser.urlencoded({extended:false}));
@@ -28,7 +30,9 @@ app.use((req,res,next)=>{
  
 app.use('/api',users_routes);
 app.use('/api',field_routes);
+app.use('/api',noticia_routes);
  
+
 
 
 module.exports=app;

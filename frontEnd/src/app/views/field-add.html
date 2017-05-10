@@ -32,6 +32,13 @@
 
 			</p>
 
+			<p>
+				<label>Distrito: </label>
+				<input type="text"  #distrit="ngModel" name="distrit" [(ngModel)]="field.distrit" class="form-control" placeholder="Ingrese el distrito" required>
+				<span *ngIf="!distrit.valid && distrit.touched">El Distrito es obligatorio</span>
+
+			</p>
+
 		<!-- ///////////////////////////////////////////////// -->	
 			<div *ngIf="is_edit">
 				<div class="field_image_for_edit" *ngIf="field.image && field.image != 'null'">
