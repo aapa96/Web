@@ -81,5 +81,27 @@ export class FieldListComponent implements OnInit{
 
 		});
 	}
+	
+	OnDeleteOk(id){
+		this._fieldService.deleteField(this.token,id).subscribe(
+			response =>{
 
+				if(!response.fields){
+					this._router.navigate(['/fields/1']);
+				}else{
+					this.getFields();
+				}
+				
+			},
+			error => {
+				var errorMessage = <any>error;
+			
+				if(errorMessage != null) {
+					var body = JSON.parse(error._body);
+					//this.alertMessage = body.message;
+					console.log(error);
+				}
+			}	
+			);
+	}
 }

@@ -1,53 +1,67 @@
+<div *ngIf="identity"  style="background: #212020;">
 
-<div *ngIf="identity" class="navigation col-lg-1">
-	<h1 class="head-tittle">
-		<a [routerLink]="['/']">
-			<span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
- 			{{title}}
- 		</a>
-	</h1>
-	<nav id="navigation">
-		
+<nav class="navbar navbar-inverse"  >
 
-		<a [routerLink]="['/fields',1]" [routerLinkActive]="['actived']">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand"  [routerLink]="['/']"><i class="fa fa-bolt" aria-hidden="true"></i>
+{{identity.name}}</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav" >
+       
+        <li><a [routerLink]="['/fields',1]" [routerLinkActive]="['actived']">
 			<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 			Complejos
-		</a>
-
-		<a [routerLink]="['/']" >
+		</a></li>
+        <li >  <a [routerLink]="['/']" >
 			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 			Eventos
-		</a>
+		</a></li>
+        <li class="dropdown">
+        
 
 		<a [routerLink]="['/']" >
-			<span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+			<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 			Tienda
 		</a>
-
-		<a [routerLink]="['/noticias',1]" [routerLinkActive]="['actived']" >
+        </li>
+        <li><a [routerLink]="['/noticias',1]" [routerLinkActive]="['actived']" >
 			<span class="glyphicon glyphicon-education" aria-hidden="true"></span>
 			Noticias
-		</a>
+		</a></li>
+ 
+      </ul>
+      <ul class="nav navbar-nav navbar-fixed">
 
-	</nav>
-
-
-	<nav id="user_logged">		
-		<span id="identity_name">
-			{{identity.name}}
-		</span>
-		
-		<a [routerLink]="['/mis-datos']" [routerLinkActive]="['actived']" >
+      	<li style="color:white;"><P style="font-size: 20px; margin-top: 13px;font-style:'arial';">PELOTUDOZ</P></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      	 
+        <li><a [routerLink]="['/mis-datos']" [routerLinkActive]="['actived']" >
 			<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 			Mis datos
-		</a>
-		<a  (click)="logout()" class="btn-logout">
+		</a></li>
+        <li class="dropdown">
+          <a  (click)="logout()" class="btn-logout">
 			<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
 			Salir
 		</a>	
-	</nav>
-	
-</div>	
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</div>
 
 <div [class.hidden]="!identity" class="'navigation col-lg-9	">
 	<router-outlet></router-outlet>
@@ -67,10 +81,11 @@
 	
 </div>
 <div class="col-lg-6"  *ngIf="!identity" >
-	<div class="btn-group">
-		<button class="btn btn-primary boton1" (click)="onInscribe()" [class.showingData]= "inscribe == true">Iniciar Sesion</button>
-		<button class="btn btn-primary boton2" (click)="onRegister()" [class.showingData]= "registre == true">Registrarse </button>
+	<div class="btn-group col-lg-offset-6 botones">
+		<button class="btn btn-primary " (click)="onInscribe()" [class.showingData]= "inscribe == true">Iniciar Sesion</button>
+		<button class="btn btn-primary " (click)="onRegister()" [class.showingData]= "registre == true">Registrarse </button>
 	</div>
+
 	
 
 	<div *ngIf="inscribe == true">

@@ -81,5 +81,27 @@ export class NoticiaListComponent implements OnInit{
 
 		});
 	}
+	OnDeleteOk(id){
+		this._noticiaService.deleteNoticia(this.token,id).subscribe(
+			response =>{
+
+				if(!response.fields){
+					this._router.navigate(['/noticias/1']);
+				}else{
+					this.getNoticias();
+				}
+				
+			},
+			error => {
+				var errorMessage = <any>error;
+			
+				if(errorMessage != null) {
+					var body = JSON.parse(error._body);
+					//this.alertMessage = body.message;
+					console.log(error);
+				}
+			}	
+			);
+	}
 
 }

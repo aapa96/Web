@@ -1,3 +1,7 @@
+
+
+
+
 <div class="head-page" *ngIf="identity">
 	<h1>
 		{{titulo}}
@@ -5,8 +9,20 @@
 	<a [routerLink]="['/createField']"  *ngIf="identity && identity.role =='ROLE_ADMIN'"  class="btn btn-default">Agregar Complejo</a>
 	
 	
+	<div class="col-lg-7">
+		<select name="Distritos" class="form-control" >
+			<option value="Mariano Melgar">Mariano Melgar</option>
+			<option value="Cercado">Cercado</option>
+			<option value="Jacobo Hunter">Jacobo Hunter</option>
+			<option value="Jose Luis Bustamante y Rivero">Jose Luis Bustamante y Rivero</option>
+			<option value="Miraflores">Miraflores</option>
+		</select>	
+	</div>
 
-	<ul class="pagination pull-right">
+	<div class="col-lg-1 btn btn-primary">
+		<a [routerLink]="['/']" style="color: white; text-decoration: none;" > Buscar </a>
+	</div>
+	<ul class="pagination pull-right" style="font-size: 30px;">
 		<li>
 		<a [routerLink]="['/fields',prevpage]">&laquo;</a>
 		</li>
@@ -47,8 +63,10 @@
 				</a>
 				<div class="buttons" *ngIf="identity.role == 'ROLE_ADMIN'">
 					<a [routerLink]="['/edit-field',field._id]" class="btn btn-sm btn-warning" > Editar</a>
-					<a href="#" class="btn btn-sm btn-danger" > Borrar</a>
+					<a (click) = "OnDeleteOk(field._id)" class="btn btn-sm btn-danger" > <i class="fa fa-trash-o" aria-hidden="true"></i>  Borrar</a>
 				</div>
+				
+
 			</div>
 		</li>
 </ul>

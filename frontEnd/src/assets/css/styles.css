@@ -1,7 +1,8 @@
 html,body{
 	margin: 0px;
 	height: 100%;
-	background: #eee;
+	background: white;
+	font-style:'arial';
 } 
 .actived{
 	border-bottom: 4px solid #84BD00;
