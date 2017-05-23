@@ -1,6 +1,6 @@
 <div *ngIf="identity"  style="background: #212020;">
 
-<nav class="navbar navbar-inverse"  >
+<nav class="navbar navbar-inverse bg-primary"  >
 
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -43,10 +43,10 @@
       </ul>
       <ul class="nav navbar-nav navbar-fixed">
 
-      	<li style="color:white;"><P style="font-size: 20px; margin-top: 13px;font-style:'arial';">PELOTUDOZ</P></li>
+      	<li style="color:white;"><P style="font-size: 20px; margin-top: 13px;font-style:'arial'; margin-left: 10px;">PELOTUDOZ</P></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-      	 
+      <ul class="nav navbar-nav navbar-right" >
+      	
         <li><a [routerLink]="['/mis-datos']" [routerLinkActive]="['actived']" >
 			<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 			Mis datos
@@ -63,12 +63,30 @@
 </nav>
 </div>
 
-<div [class.hidden]="!identity" class="'navigation col-lg-9	">
-	<router-outlet></router-outlet>
-	
+<div [class.hidden]="!identity" class="'navigation">
+	<div class="col-lg-10">
+		<router-outlet></router-outlet>
+	</div>
+	<div class="col-lg-1 ">
+		<h1>Propaganda</h1>
+	</div>
+	<div class="container col-lg-12">
+	<div class="col-lg-6">
+		<p><strong>Copyright 2017</strong></p>
+		<p><strong>Arequipa-Peru</strong></p>
+	</div>
+
+	<div class="foter">
+		<a href="#"> <i class="btn btn-primary fa fa-facebook col-lg-1">   </i> </a>
+	 
+		<a href="#"> <i class="btn btn-primary fa fa-twitter col-lg-1">   </i> </a>
+	 
+		<a href="#"> <i class="btn btn-primary fa fa-youtube col-lg-1">   </i> </a>
+	</div>
+</div>
+ 
 </div>	
 
- 
 
 
 
@@ -77,10 +95,10 @@
 
 
  
-<div class="col-lg-6">
+<div class="col-lg-4">
 	
 </div>
-<div class="col-lg-6"  *ngIf="!identity" >
+<div class="col-lg-5"  *ngIf="!identity" >
 	<div class="btn-group col-lg-offset-6 botones">
 		<button class="btn btn-primary " (click)="onInscribe()" [class.showingData]= "inscribe == true">Iniciar Sesion</button>
 		<button class="btn btn-primary " (click)="onRegister()" [class.showingData]= "registre == true">Registrarse </button>
@@ -170,5 +188,9 @@
 		</div>
 	</div>
 </div>
-
-
+ <!-- <li style="font-size: 20px; margin-bottom: 10px;"><a href="#"> <i class="fa fa-facebook col-lg-2 col-xs-4">   </i><span class="visible-xs-inline-block col-xs-6">Facebook</span> </a> </li>
+      	 
+      	 		<li style="font-size: 20px; margin-bottom: 10px;"><a href="#"> <i class="fa fa-twitter col-lg-2 col-xs-4">   </i><span class="visible-xs-inline-block col-xs-6">Twitter</span> </a></li>
+      	 
+      	 		<li style="font-size: 20px; margin-bottom: 15px;"><a href="#"> <i class="fa fa-youtube col-lg-2 col-xs-4">   </i> <span class="visible-xs-inline-block col-xs-6">Youtube</span></a></li> -->
+<!-- 	 	<li><a href="tel:950805514"><img src="http://www.domain.com/files/phone-icon.jpg"></a></li> -->

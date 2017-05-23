@@ -54,7 +54,6 @@ function getFields(req,res){
 
 }
 
-
 function getFieldsDistrit(req,res){
 	if(req.params.page){
 		var page = req.params.page;

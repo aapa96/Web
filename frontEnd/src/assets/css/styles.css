@@ -1,7 +1,7 @@
 html,body{
 	margin: 0px;
 	height: 100%;
-	background: white;
+	background: #CCC8C8;
 	font-style:'arial';
 } 
 .actived{
@@ -15,6 +15,12 @@ html,body{
 	margin-bottom: 25px;
 	display: block;
 
+}
+.flotante {
+    display:scroll;
+        position:fixed;
+        bottom:320px;
+        right:0px;
 }
 .navigation{
 	text-align: center;
@@ -70,16 +76,49 @@ html,body{
 	left: 220px;
 
 }
-
+ 
+.field-list{
+	margin:0px;
+	list-style: none;
+	padding: 0px;
  
 
-.field_image_for_edit img{
-	width: 150px;
+
 }
 
-.noticia_image_for_edit img{
-	width: 300px;
+
+.field-list .field-item{
+ 
+	margin-right: 50px;
+	margin-bottom: 30px;
+ 
 }
+
+.field-list .field-image{
+	
+	overflow: hidden;
+	background: black;
+
+}
+.field-list .field-image img{
+	width: 100%;
+}
+
+
+.field-item .field-name{
+	color: white;
+	padding: 10px;
+	background: #222326;
+
+
+}
+
+.foter a{
+
+}
+
+/*
+
 
 .field-list{
 	margin:0px;
@@ -157,7 +196,7 @@ html,body{
 	
 }
 
-/*
+
 .noticia-item .noticia-image img{
 	width:100%;	
 }

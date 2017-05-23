@@ -3,13 +3,13 @@
 
 
 <div class="head-page" *ngIf="identity">
-	<h1>
-		{{titulo}}
-	</h1>
+	<div class="col-lg-3">
+		<h1>{{titulo}}</h1>
+	</div>
 	<a [routerLink]="['/createField']"  *ngIf="identity && identity.role =='ROLE_ADMIN'"  class="btn btn-default">Agregar Complejo</a>
 	
 	
-	<div class="col-lg-7">
+	<div class="form-group col-lg-6 col-lg-offset-1">
 		<select name="Distritos" class="form-control" >
 			<option value="Mariano Melgar">Mariano Melgar</option>
 			<option value="Cercado">Cercado</option>
@@ -17,12 +17,14 @@
 			<option value="Jose Luis Bustamante y Rivero">Jose Luis Bustamante y Rivero</option>
 			<option value="Miraflores">Miraflores</option>
 		</select>	
+
 	</div>
 
-	<div class="col-lg-1 btn btn-primary">
+	<div class="btn btn-primary">
 		<a [routerLink]="['/']" style="color: white; text-decoration: none;" > Buscar </a>
 	</div>
 	<ul class="pagination pull-right" style="font-size: 30px;">
+
 		<li>
 		<a [routerLink]="['/fields',prevpage]">&laquo;</a>
 		</li>
@@ -35,8 +37,8 @@
 
 </div>
 <br>
-
-<!-- <div class="col-lg-7">
+<!-- <a href="#" class="flotante"> <i class="fa fa-facebook col-lg-2">   </i> </a>
+ --><!-- <div class="col-lg-7">
 	<select name="Distritos" class="form-control" >
 		<option value="Mariano Melgar">Mariano Melgar</option>
 		<option value="Cercado">Cercado</option>
@@ -52,16 +54,19 @@
 
 <div class="clearfix"></div>
 
-<ul class="field-list" *ngIf="identity">
-		<li *ngFor="let field of fields" class="col-lg-3 field-item">
+<ul class="field-list col-lg-12" *ngIf="identity">
+		<li *ngFor="let field of fields" class="col-lg-3 col-md-5  col-sm-6 field-item">
 		<div class="field-image">
 			<a [routerLink]="['/field',field._id]"><img src="{{ url +'/get-image-Field/'+field.image }}"></a>
 		</div>
-			<div class="field-name">
-				<a [routerLink]="['/field',field._id]">
+			<div class="field-name col-lg-12">
+				<div class="col-lg-3">
+					<a class="btn btn-primary" [routerLink]="['/field',field._id]">
 					{{field.name}}
 				</a>
-				<div class="buttons" *ngIf="identity.role == 'ROLE_ADMIN'">
+				</div>
+
+				<div class="buttons " *ngIf="identity.role == 'ROLE_ADMIN'">
 					<a [routerLink]="['/edit-field',field._id]" class="btn btn-sm btn-warning" > Editar</a>
 					<a (click) = "OnDeleteOk(field._id)" class="btn btn-sm btn-danger" > <i class="fa fa-trash-o" aria-hidden="true"></i>  Borrar</a>
 				</div>
@@ -70,3 +75,5 @@
 			</div>
 		</li>
 </ul>
+
+<div class="clearfix"></div> 
