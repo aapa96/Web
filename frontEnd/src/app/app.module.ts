@@ -18,6 +18,12 @@ import { NoticiaAddComponent } from './components/noticia-add.component';
 import { NoticiadEditComponent } from './components/noticia-edit.component';
 import { NoticiaDetailComponent } from './components/noticia-detail.component';
 
+import { EventoAddComponent } from './components/eventos-add.component'; 
+import { EventoListComponent } from './components/eventos-list.component';
+/*import { EventoListComponent } from './components/evento-list.component';
+import { EventodAddComponent } from './components/evento-add.component'; 
+import { EventoDetailComponent } from './components/evento-detail.component';
+*/
  
 
 
@@ -32,11 +38,16 @@ import { NoticiaDetailComponent } from './components/noticia-detail.component';
     FieldEditComponent,
     FieldDetailComponent,
 
+    EventoAddComponent,
+    EventoListComponent,
+ 
     NoticiaListComponent,
     NoticiaAddComponent,
     NoticiadEditComponent,
     NoticiaDetailComponent
- 
+
+
+
   ],
   imports: [
     BrowserModule,

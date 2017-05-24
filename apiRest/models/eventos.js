@@ -1,12 +1,13 @@
 'use strict'
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var EventosSchema = Schema({
-	Nombre: String,
-	Phone: String,
+var EventoSchema = Schema({
+	name: String,
+	empresa: String,
 	description: String,
-	email:String
+	email:String,
+	phone:String
 })
 
 
-module.exports = mongoose.model('Eventos',EventosSchema);
+module.exports = mongoose.model('Evento',EventoSchema);

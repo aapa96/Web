@@ -20,7 +20,11 @@ import { NoticiaAddComponent } from './components/noticia-add.component';
 import { NoticiadEditComponent } from './components/noticia-edit.component';
 import { NoticiaDetailComponent } from './components/noticia-detail.component';
 
- 
+ //eventos
+
+import { EventoAddComponent } from './components/eventos-add.component'; 
+import { EventoListComponent } from './components/eventos-list.component';
+
  
 
 const appRoutes: Routes = [
@@ -31,16 +35,18 @@ const appRoutes: Routes = [
 	{path:'createField', component:FieldAddComponent},
 	{path:'edit-field/:id', component:FieldEditComponent},
 	{path:'field/:id', component:FieldDetailComponent},
-
-
-
 	
+
+	{path:'crear-eventos', component:EventoAddComponent}, 
+	{path:'eventos/:page', component:EventoListComponent},
 
 	{path:'noticias/:page', component:NoticiaListComponent},
 	{path:'crear-noticias', component:NoticiaAddComponent},
 	{path:'edit-noticia/:id', component:NoticiadEditComponent},
 	{path:'noticia/:id', component:NoticiaDetailComponent},
- 	
+
+
+ 
  	{path:'**',component:HomeComponent} 	
 
 ];

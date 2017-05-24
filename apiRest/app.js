@@ -9,6 +9,7 @@ var app = express();
 var users_routes = require('./routes/users');
 var field_routes = require('./routes/canchas');
 var noticia_routes = require('./routes/noticias');
+var eventos_routes = require('./routes/eventos');
 
 
 
@@ -31,7 +32,9 @@ app.use((req,res,next)=>{
 app.use('/api',users_routes);
 app.use('/api',field_routes);
 app.use('/api',noticia_routes);
+app.use('/api',eventos_routes);
  
+
 
 
 

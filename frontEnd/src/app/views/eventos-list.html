@@ -1,0 +1,36 @@
+<div class="head=page" *ngIf="identity && identity.role =='ROLE_ADMIN'">
+	<h1>{{titulo}}</h1>	 
+</div>
+
+<p>asdfjkalsjdfj</p>
+<br>
+
+
+
+
+
+
+<div class="clearfix"></div>
+
+<ul class="eventos-list" *ngIf="identity && identity.role =='ROLE_ADMIN'">
+	<li *ngFor="let evento of eventos" class="col-lg-12 eventos-item">
+
+		 
+		<div class="eventos-name" >
+
+		<ul>
+			<li>{{evento.name}}</li>
+			<li>{{evento.empresa}}</li>
+			<li>{{evento.description}}</li>
+			<li>{{evento.email}}</li>
+			<li>{{evento.phone}}</li>
+		</ul>
+		 
+		</div>
+	</li>
+</ul>
+
+<div class="col-lg-6" *ngIf="!identity || identity.role != 'ROLE_ADMIN'">
+	<h1>Error</h1>
+	<p>No tienes acceso a esta parte de la aplicacion.</p>
+</div>
