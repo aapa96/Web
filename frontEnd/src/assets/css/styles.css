@@ -113,100 +113,58 @@ html,body{
 
 }
 
-.foter a{
-
-}
-
-/*
-
-
-.field-list{
-	margin:0px;
-	padding: 0px;
+ .boton{
+ 	padding-left: 50px;
+ }
+.Distritos{
 	margin-top: 30px;
-	list-style: none;
-
-
 }
+.Distritos1{
+	margin-top: 30px;
+} 
 
-
-.field-item{
-	width: 23%;
-	margin: 0px;
-	padding: 0px;
-	height: 317px;
-	border: 1px solid #444;
-	margin-left: 20px;
-	margin-top: 20px;
-
-}
-
-.field-item .field-image{
-	width: 100%;
-	height: 245px;
-	overflow: hidden;
-	background: black;
-
-	
-}
-
-
-.field-item .field-image img{
-	width:100%;	
-}
-
-.field-item .field-name{
-	color: white;
-	padding: 10px;
-	background: #222326;
-
-}
-.field-item .field-name a{
-	color: white;
-}
 
 
 .noticia-list{
 	margin:0px;
-	padding: 0px;
-	margin-top: 50px;
 	list-style: none;
-
-
-}
-
-/
-.noticia-item{
-	width: 23%;
-	margin: 0px;
 	padding: 0px;
-	height: 317px;
-	border: 1px solid #444;
-	margin-left: 20px;
-	margin-top: 20px;
+ 
+
 
 }
 
-.noticia-item .noticia-image{
-	width: 100%;
-	height: 300px;
+
+.noticia-list .noticia-item{
+ 
+	margin-right: 50px;
+	margin-bottom: 30px;
+ 
+}
+
+.noticia-list .noticia-image{
+	
 	overflow: hidden;
 	background: black;
 
-	
+}
+.noticia-list .noticia-image img{
+	width: 100%;
 }
 
-
-.noticia-item .noticia-image img{
-	width:100%;	
-}
 
 .noticia-item .noticia-name{
 	color: white;
-	padding: 10px;
+ 
 	background: #222326;
+
 
 }
 .noticia-item .noticia-name a{
 	color: white;
-}  */
+	padding: 20px;
+	 
+
+
+}
+ 

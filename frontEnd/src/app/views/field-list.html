@@ -5,11 +5,12 @@
 <div class="head-page" *ngIf="identity">
 	<div class="col-lg-3">
 		<h1>{{titulo}}</h1>
+		<a [routerLink]="['/createField']"  *ngIf="identity && identity.role =='ROLE_ADMIN'"  class="btn btn-default">Agregar Complejo</a>
 	</div>
-	<a [routerLink]="['/createField']"  *ngIf="identity && identity.role =='ROLE_ADMIN'"  class="btn btn-default">Agregar Complejo</a>
+	 
 	
 	
-	<div class="form-group col-lg-6 col-lg-offset-1">
+	<div class="Distritos form-group col-lg-5 ">
 		<select name="Distritos" class="form-control" >
 			<option value="Mariano Melgar">Mariano Melgar</option>
 			<option value="Cercado">Cercado</option>
@@ -17,13 +18,14 @@
 			<option value="Jose Luis Bustamante y Rivero">Jose Luis Bustamante y Rivero</option>
 			<option value="Miraflores">Miraflores</option>
 		</select>	
-
-	</div>
-
-	<div class="btn btn-primary">
+		<br>
+		<div class=" btn btn-primary">
 		<a [routerLink]="['/']" style="color: white; text-decoration: none;" > Buscar </a>
 	</div>
-	<ul class="pagination pull-right" style="font-size: 30px;">
+	</div>
+
+ 
+	<ul class="pagination pull-right col-lg-3" style="font-size: 30px;">
 
 		<li>
 		<a [routerLink]="['/fields',prevpage]">&laquo;</a>
@@ -66,7 +68,9 @@
 				</a>
 				</div>
 
-				<div class="buttons " *ngIf="identity.role == 'ROLE_ADMIN'">
+				<div class="boton " *ngIf="identity.role == 'ROLE_ADMIN'">
+				<br>
+				<br>
 					<a [routerLink]="['/edit-field',field._id]" class="btn btn-sm btn-warning" > Editar</a>
 					<a (click) = "OnDeleteOk(field._id)" class="btn btn-sm btn-danger" > <i class="fa fa-trash-o" aria-hidden="true"></i>  Borrar</a>
 				</div>
@@ -77,3 +81,14 @@
 </ul>
 
 <div class="clearfix"></div> 
+<ul class="pagination pull-right   visible-xs visible-sm" style="font-size: 30px;">
+
+		<li>
+		<a [routerLink]="['/fields',prevpage]">&laquo;</a>
+		</li>
+
+		<li>
+		<a [routerLink]="['/fields',nextpage]">&raquo;</a>
+		</li>
+
+	</ul>

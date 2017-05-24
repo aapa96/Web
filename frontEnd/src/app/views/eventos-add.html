@@ -1,4 +1,4 @@
-<div class="col-lg-6" *ngIf="identity && identity.role == 'ROLE_ADMIN' || identity && identity.role == 'ROLE_USER'">
+<div class="col-lg-6 col-lg-offset-3" *ngIf="identity && identity.role == 'ROLE_ADMIN' || identity && identity.role == 'ROLE_USER'">
 	<h1>{{titulo}}</h1>
 	<div *ngIf="alertMessage">
 		<div class="alert alert-info">
@@ -48,12 +48,13 @@
 		</p>
 
 
- 
+ 		
 
 		<input type="submit" class="btn btn-success"   value="{{titulo}}" [disabled]="!formNoticia.form.valid" >
+		<br>
 	</form>
 
-
+<br>
 	
 </div>
 
