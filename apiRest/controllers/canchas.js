@@ -35,7 +35,7 @@ function getFields(req,res){
 	}
 	
 	var itemsPerPage =8;
-	Field.find().sort('name').paginate(page, itemsPerPage, function(err,fields,total){
+	Field.find().sort('distrit').paginate(page, itemsPerPage, function(err,fields,total){
 
 		if(err){
 			res.status(500).send({message:'Error en la peticion'});

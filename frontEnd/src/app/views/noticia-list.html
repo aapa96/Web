@@ -30,7 +30,7 @@
 			</a>
 			<br>
 			{{noticia.subtitle}}
-			<div class="buttons" *ngIf="identity.role == 'ROLE_ADMIN'">
+			<div class="boton" *ngIf="identity.role == 'ROLE_ADMIN'">
 				<a [routerLink]="['/edit-noticia',noticia._id]" class="btn btn-sm btn-warning" > Editar</a>
 				<a (click) = "OnDeleteOk(noticia._id)" class="btn btn-sm btn-danger" > Borrar</a>
 			</div>

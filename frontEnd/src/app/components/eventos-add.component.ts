@@ -30,7 +30,7 @@ export class EventoAddComponent implements OnInit{
 		private _userService:UserService,
 		private _eventoService:EventoService
 	){
-		this.titulo = 'Crear Evento';
+		this.titulo = 'Organize su evento';
 		this.identity = this._userService.getIdentity();
 		this.token = this._userService.getToken();
 		this.url = GLOBAL.url;	

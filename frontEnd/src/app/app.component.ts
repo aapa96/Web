@@ -11,7 +11,7 @@ import {Router, ActivatedRoute,Params } from '@angular/router';
   //styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public title = 'Super Kampeones!';
+  public title = 'SoccerFields';
 	public user: User;
 	public user_register: User;
 	public identity;
